@@ -12,7 +12,7 @@
 
 ### 기본 매핑 예제
 
-```json
+```
 DELETE /member
 PUT /member
 {
@@ -40,7 +40,7 @@ PUT /member
 
 ### 문서 추가 예제
 
-```json
+```
 POST /member/_doc/1
 {
   "name": "John Doe",
@@ -63,7 +63,7 @@ POST /member/_doc/1
 
 ### 문서 조회
 
-```json
+```
 GET /member/_doc/1
 ```
 
@@ -71,7 +71,7 @@ GET /member/_doc/1
 
 ### Object 타입 예제
 
-```json
+```
 DELETE /my_user
 PUT /my_user
 {
@@ -99,7 +99,7 @@ PUT /my_user
 
 ### 문서 추가 (Object 타입)
 
-```json
+```
 POST /my_user/_doc/1
 {
   "user": {
@@ -123,7 +123,7 @@ POST /my_user/_doc/1
 
 ### Object 타입 검색 (주의: 예상과 다른 결과가 나올 수 있음)
 
-```json
+```
 GET /my_user/_search
 {
   "query": {
@@ -139,7 +139,7 @@ GET /my_user/_search
 
 ### Nested 타입 예제
 
-```json
+```
 DELETE /my_nested_user
 PUT /my_nested_user
 {
@@ -167,7 +167,7 @@ PUT /my_nested_user
 
 ### 문서 추가 (Nested 타입)
 
-```json
+```
 POST /my_nested_user/_doc/1
 {
   "user": {
@@ -191,7 +191,7 @@ POST /my_nested_user/_doc/1
 
 ### Nested 타입 검색 예제
 
-```json
+```
 GET /my_nested_user/_search
 {
   "query": {
@@ -214,7 +214,7 @@ GET /my_nested_user/_search
 
 ### Percolator 타입 (저장된 쿼리)
 
-```json
+```
 DELETE /my-index
 PUT /my-index
 {
@@ -254,7 +254,7 @@ POST /my-index/_search
 
 ### Binary 타입
 
-```json
+```
 DELETE /binary-index
 PUT /binary-index
 {
@@ -281,7 +281,7 @@ GET /binary-index/_doc/1
 
 ## 매핑 정보 조회
 
-```json
+```
 GET /member/_mapping
 
 GET /member/_mapping/field/name
@@ -291,7 +291,7 @@ GET /member/_mapping/field/preferences.newsletter
 
 ## 플랫 매핑 (Flat Mapping)
 
-```json
+```
 PUT /member_new
 {
   "mappings": {
@@ -315,7 +315,7 @@ GET /member_new/_mapping
 
 ## 기존 매핑 업데이트
 
-```json
+```
 PUT /member_new/_mapping
 {
   "properties": {

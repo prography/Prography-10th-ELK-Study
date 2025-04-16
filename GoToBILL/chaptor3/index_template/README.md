@@ -37,7 +37,7 @@ Elasticsearch는 다음과 같은 패턴에 우선순위 100으로 설정된 기
 
 ### 1. 인덱스 템플릿 생성
 
-```json
+```
 PUT /_index_template/logs_template
 {
   "index_patterns": ["log-*"],
@@ -74,14 +74,14 @@ PUT /_index_template/logs_template
 
 ### 2. 템플릿 조회 및 삭제
 
-```json
+```
 GET /_index_template/logs_template
 DELETE /_index_template/logs_template
 ```
 
 ### 3. 인덱스 생성 및 데이터 추가
 
-```json
+```
 PUT /log-2024-06-18
 {
   "mappings": {
@@ -109,14 +109,14 @@ POST /log-2024-06-18/_doc/1
 
 ### 4. 인덱스 설정 및 매핑 조회
 
-```json
+```
 GET /log-2024-06-18/_settings
 GET /log-2024-06-18/_mapping
 ```
 
 ### 5. 별칭을 통한 검색
 
-```json
+```
 GET /logs/_search
 {
   "query": {
@@ -130,7 +130,7 @@ GET /logs/_search
 
 ### 6. 우선순위가 높은 새 템플릿 추가
 
-```json
+```
 PUT /_index_template/specific_logs_template
 {
   "index_patterns": ["log-2024-*"],
@@ -160,7 +160,7 @@ PUT /_index_template/specific_logs_template
 
 ### 7. 새 인덱스 생성 및 확인
 
-```json
+```
 PUT /log-2024-06-20
 {
   "mappings": {
