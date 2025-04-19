@@ -14,7 +14,8 @@
 
 🔥 
 - Elasticsearch 내부에서는 항상 EpochMilli를 사용한다.
-- Retrieve 할 때는 Date가 INSERT한 그대로 들어가 있지만, Search 하거나, 거맥 내에서 필터를 할 때는 항상 Epoch Milli를 기준으로 사용한다.
+- Retrieve 할 때는 Date가 INSERT한 그대로 들어가 있지만, Search 하거나, 검색 내에서 필터를 할 때는 항상 Epoch Milli를 기준으로 사용한다.
+- 주의해야할 점은, EpochMillis로 변환할 수 없는 데이터의 경우 date 타입으로 조회할 수 없다. 따라서, date를 관리할 땐, EpochMillis로 변환될 수 있는 date 타입을 사용하는 것을 지향하자.
 
 
 ## Mapping Date Fields
