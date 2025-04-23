@@ -70,7 +70,7 @@ Elasticsearch는 두 가지 매핑 접근 방식을 제공합니다:
 
 ### 3.1 인덱스 생성 시 매핑 정의
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -114,7 +114,7 @@ PUT /my_index
 
 ### 3.2 기존 매핑 조회
 
-```json
+```
 GET /my_index/_mapping
 ```
 
@@ -122,7 +122,7 @@ GET /my_index/_mapping
 
 Elasticsearch에서는 기존 필드의 매핑을 변경할 수 없습니다. 하지만 새로운 필드를 추가할 수는 있습니다:
 
-```json
+```
 PUT /my_index/_mapping
 {
   "properties": {
@@ -142,7 +142,7 @@ PUT /my_index/_mapping
 
 인덱스 레벨에서 동적 매핑 동작을 제어할 수 있습니다:
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -182,7 +182,7 @@ PUT /my_index
 
 ### 4.2 텍스트 필드 관련 파라미터
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -210,7 +210,7 @@ PUT /my_index
 
 ### 4.3 숫자 및 날짜 필드 관련 파라미터
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -239,7 +239,7 @@ PUT /my_index
 
 동일한 값을 여러 방식으로 인덱싱하여 다양한 검색 및 집계 기능을 지원합니다:
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -271,7 +271,7 @@ PUT /my_index
 
 필드 별칭을 사용하여 기존 필드에 대한 대체 이름을 생성할 수 있습니다:
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -292,7 +292,7 @@ PUT /my_index
 
 동적으로 생성되는 필드에 대한 사용자 정의 매핑 규칙을 정의할 수 있습니다:
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -362,7 +362,7 @@ PUT /my_index
 3. **리인덱싱**: 데이터를 새 인덱스로 복사
 4. **별칭 전환**: 별칭을 새 인덱스로 변경하여 무중단 전환
 
-```json
+```
 # 별칭 생성
 POST /_aliases
 {
@@ -398,7 +398,7 @@ POST /_aliases
 
 새로운 필드를 추가하며 매핑을 점진적으로 발전시키는 방법:
 
-```json
+```
 PUT /my_index/_mapping
 {
   "properties": {
@@ -418,7 +418,7 @@ PUT /my_index/_mapping
 
 이 경우 리인덱싱 시 변환 스크립트를 사용할 수 있습니다:
 
-```json
+```
 POST /_reindex
 {
   "source": {
