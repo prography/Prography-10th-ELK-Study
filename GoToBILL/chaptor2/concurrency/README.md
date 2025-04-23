@@ -69,7 +69,7 @@ Elasticsearch의 동시성 제어는 **낙관적 접근 방식**을 채택합니
 3. 버전 번호를 포함하여 업데이트 요청
 4. 충돌 시 1단계부터 재시도
 
-```javascript
+```
 // 예시 코드 (의사 코드)
 function updateDocument(id, updateFn, maxRetries = 3) {
   let retries = 0;
@@ -120,7 +120,7 @@ function updateDocument(id, updateFn, maxRetries = 3) {
 
 이 두 값을 함께 사용하면 더 정확한 동시성 제어가 가능합니다:
 
-```json
+```
 PUT /my_index/_doc/1?if_seq_no=123&if_primary_term=2
 {
   "title": "시퀀스 번호와 주 텀을 사용한 업데이트",

@@ -18,7 +18,7 @@
 
 ### 사용자 정의 라우팅(Custom Routing)
 
-- 문서가 어느 샤드에 저장될지 **사용자가 지정한 값(라우팅 키)**을 사용하여 결정할 수 있습니다. 이렇게 하면 특정 **쿼리 패턴**에 맞는 문서들이 같은 샤드에 저장되도록 할 수 있어 **성능 향상**에 도움이 됩니다.
+- 문서가 어느 샤드에 저장될지 **사용자가 지정한 값**을 사용하여 결정할 수 있습니다. 이렇게 하면 특정 **쿼리 패턴**에 맞는 문서들이 같은 샤드에 저장되도록 할 수 있어 **성능 향상**에 도움이 됩니다.
 
 - **예시**: `POST /my_index/_doc/1?routing=user123`처럼 `routing` 파라미터에 `user123`을 전달하면, Elasticsearch는 이 값에 따라 문서를 특정 샤드에 저장합니다.
 
@@ -40,7 +40,7 @@
 
 ### 1. 문서 삽입
 
-```json
+```
 POST /my_index/_doc/1?routing=user123
 {
   "title": "Elasticsearch Basics",
@@ -54,7 +54,7 @@ POST /my_index/_doc/1?routing=user123
 
 ### 2. 검색
 
-```json
+```
 GET /my_index/_search?routing=user123
 {
   "query": {

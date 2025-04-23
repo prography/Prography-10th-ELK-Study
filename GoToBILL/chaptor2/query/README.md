@@ -27,7 +27,7 @@ Elasticsearch에서 데이터를 검색할 때 크게 두 가지 컨텍스트가
 #### term 쿼리
 정확한 용어와 일치하는 문서를 찾습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -43,7 +43,7 @@ GET /my_index/_search
 #### terms 쿼리
 여러 용어 중 하나와 일치하는 문서를 찾습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -57,7 +57,7 @@ GET /my_index/_search
 #### range 쿼리
 숫자나 날짜의 범위를 지정합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -74,7 +74,7 @@ GET /my_index/_search
 #### exists 쿼리
 특정 필드가 존재하는 문서를 찾습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -88,7 +88,7 @@ GET /my_index/_search
 #### prefix 쿼리
 특정 접두사로 시작하는 용어를 찾습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -106,7 +106,7 @@ GET /my_index/_search
 #### match 쿼리
 기본적인 전문 검색 쿼리로, 지정된 텍스트와 일치하는 문서를 찾습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -120,7 +120,7 @@ GET /my_index/_search
 #### match_phrase 쿼리
 정확한 구문을 검색합니다. 단어의 순서와 인접성이 중요합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -134,7 +134,7 @@ GET /my_index/_search
 #### multi_match 쿼리
 여러 필드에서 동일한 텍스트를 검색합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -149,7 +149,7 @@ GET /my_index/_search
 #### query_string 쿼리
 Lucene 쿼리 구문을 사용한 고급 검색을 수행합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -168,7 +168,7 @@ GET /my_index/_search
 #### bool 쿼리
 Boolean 논리를 사용하여 여러 쿼리를 조합합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -199,7 +199,7 @@ GET /my_index/_search
 #### function_score 쿼리
 검색 결과의 점수를 조정하는 쿼리입니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -250,7 +250,7 @@ GET /my_index/_search
 - 깊은 페이지네이션은 피하세요.
 - Search After API 또는 Scroll API를 사용하세요.
 
-```json
+```
 // Search After API 예시
 GET /my_index/_search
 {
@@ -271,7 +271,7 @@ GET /my_index/_search
 ### 4.1 Query와 Filter의 조합
 일반적으로 다음과 같은 패턴이 권장됩니다:
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -291,7 +291,7 @@ GET /my_index/_search
 ### 4.2 Boosting
 특정 필드나 쿼리의 점수를 조정할 수 있습니다:
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -308,7 +308,7 @@ GET /my_index/_search
 ### 4.3 Synonym 사용
 유사어 검색을 활용하여 검색 결과를 개선할 수 있습니다:
 
-```json
+```
 // 인덱스 설정에 synonym filter 추가
 PUT /my_index
 {
@@ -347,7 +347,7 @@ PUT /my_index
 ### 5.1 Explain API
 쿼리 실행 계획과 점수 계산 방식을 확인할 수 있습니다:
 
-```json
+```
 GET /my_index/_explain/1
 {
   "query": {
@@ -359,7 +359,7 @@ GET /my_index/_explain/1
 ### 5.2 Profile API
 쿼리 성능을 분석할 수 있습니다:
 
-```json
+```
 GET /my_index/_search
 {
   "profile": true,

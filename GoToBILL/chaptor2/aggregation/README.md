@@ -21,7 +21,7 @@ Elasticsearch는 크게 네 가지 유형의 집계를 제공합니다:
 #### terms 집계
 필드의 값을 기준으로 문서를 그룹화합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -39,7 +39,7 @@ GET /my_index/_search
 #### range 집계
 지정된 범위를 기준으로 문서를 그룹화합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -61,7 +61,7 @@ GET /my_index/_search
 #### date_histogram 집계
 날짜/시간 필드를 기준으로 문서를 시간 간격으로 그룹화합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -79,7 +79,7 @@ GET /my_index/_search
 #### filter 집계
 지정된 필터를 통과하는 문서에 대해 집계합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -105,7 +105,7 @@ GET /my_index/_search
 #### avg/min/max/sum 집계
 기본적인 수학 연산을 수행합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -121,7 +121,7 @@ GET /my_index/_search
 #### stats 집계
 여러 기본 통계(count, min, max, avg, sum)를 한 번에 계산합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -136,7 +136,7 @@ GET /my_index/_search
 #### cardinality 집계
 필드의 고유 값 개수를 계산합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -151,7 +151,7 @@ GET /my_index/_search
 #### percentiles 집계
 데이터의 백분위 분포를 계산합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -173,7 +173,7 @@ GET /my_index/_search
 #### avg_bucket 집계
 다른 집계의 값에 대한 평균을 계산합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -199,7 +199,7 @@ GET /my_index/_search
 #### derivative 집계
 연속적인 버킷 간의 변화율을 계산합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -223,7 +223,7 @@ GET /my_index/_search
 #### cumulative_sum 집계
 버킷에 걸쳐 누적 합계를 계산합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -251,7 +251,7 @@ GET /my_index/_search
 #### matrix_stats 집계
 여러 숫자 필드 간의 통계와 상관 관계를 계산합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -271,7 +271,7 @@ GET /my_index/_search
 
 버킷 집계 내에 다른 집계(버킷 또는 메트릭)를 중첩할 수 있습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -303,7 +303,7 @@ GET /my_index/_search
 
 필터된 문서 집합에 대해 집계를 수행할 수 있습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -340,7 +340,7 @@ GET /my_index/_search
 
 날짜 히스토그램과 다양한 집계를 결합하여 시계열 데이터를 분석할 수 있습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -375,7 +375,7 @@ GET /my_index/_search
 #### 루신 doc values 활용
 대부분의 집계는 doc values를 사용합니다. 집계에 사용하지 않는 필드는 doc values를 비활성화하여 디스크 공간을 절약할 수 있습니다.
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -395,7 +395,7 @@ PUT /my_index
 #### 필드 데이터 캐시 제한
 text 필드에 대한 집계는 필드 데이터 캐시를 사용합니다. 이 캐시의 크기를 제한하여 메모리 사용량을 관리할 수 있습니다.
 
-```json
+```
 PUT _cluster/settings
 {
   "persistent": {
@@ -417,7 +417,7 @@ PUT _cluster/settings
 #### 필터 컨텍스트 사용
 가능한 경우 query 대신 filter 컨텍스트를 사용합니다. 필터는 캐시될 수 있으며 관련성 점수를 계산하지 않습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "query": {
@@ -439,7 +439,7 @@ GET /my_index/_search
 #### 부분 집계 결과
 대략적인 결과가 허용되는 경우, 더 빠른 집계를 위해 정확도를 희생할 수 있습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -457,7 +457,7 @@ GET /my_index/_search
 #### 집계 결과 캐싱
 자주 사용되는 집계의 경우 요청 캐시를 활성화할 수 있습니다.
 
-```json
+```
 GET /my_index/_search?request_cache=true
 {
   "size": 0,
@@ -475,7 +475,7 @@ GET /my_index/_search?request_cache=true
 
 필드 값을 직접 사용하는 대신 스크립트를 사용하여 집계를 수행할 수 있습니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -495,7 +495,7 @@ GET /my_index/_search
 
 중첩 문서에 대한 집계를 수행하려면 `nested` 집계를 사용해야 합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -520,7 +520,7 @@ GET /my_index/_search
 
 여러 버킷 소스를 조합하여 모든 가능한 조합을 생성하는 집계입니다. 큰 데이터셋에서 페이지네이션을 지원합니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,
@@ -552,7 +552,7 @@ GET /my_index/_search
 
 집계 시 필드 값이 없는 문서를 처리하는 방법입니다.
 
-```json
+```
 GET /my_index/_search
 {
   "size": 0,

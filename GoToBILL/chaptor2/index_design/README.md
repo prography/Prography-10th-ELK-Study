@@ -47,7 +47,7 @@ logs-2023.04.03
 
 ILM을 사용하여 인덱스 수명 주기를 자동화할 수 있습니다:
 
-```json
+```
 PUT _ilm/policy/logs_policy
 {
   "policy": {
@@ -107,7 +107,7 @@ PUT _ilm/policy/logs_policy
 - **핫스팟 방지**: 시간 기반 데이터의 경우 롤오버 정책 사용
 - **재샤딩 계획**: 필요 시 리인덱싱 또는 분할 API 활용
 
-```json
+```
 # 인덱스 생성 시 샤드 수 지정
 PUT /my_index
 {
@@ -122,7 +122,7 @@ PUT /my_index
 
 커스텀 라우팅을 사용하여 관련 데이터를 동일한 샤드에 배치할 수 있습니다:
 
-```json
+```
 # 인덱싱 시 라우팅 값 지정
 PUT /my_index/_doc/1?routing=user123
 {
@@ -149,7 +149,7 @@ GET /my_index/_search?routing=user123
 
 다양한 사용 사례를 지원하기 위해 동일한 데이터를 여러 방식으로 인덱싱:
 
-```json
+```
 PUT /my_index
 {
   "mappings": {
@@ -186,7 +186,7 @@ Elasticsearch는 관계형 DB와 달리 비정규화를 선호합니다:
 
 템플릿을 사용하여 새 인덱스에 자동으로 설정 및 매핑 적용:
 
-```json
+```
 PUT _index_template/logs_template
 {
   "index_patterns": ["logs-*"],
@@ -210,7 +210,7 @@ PUT _index_template/logs_template
 
 별칭을 사용하여 인덱스 스위칭, 멀티 인덱스 쿼리, 필터링된 뷰 생성:
 
-```json
+```
 # 단일 인덱스에 별칭 추가
 POST /_aliases
 {
@@ -260,7 +260,7 @@ POST /_aliases
 
 롤오버 API와 인덱스 별칭을 결합하여 인덱스 전환을 관리:
 
-```json
+```
 # 초기 인덱스 생성 (별칭 포함)
 PUT /logs-000001
 {
@@ -309,7 +309,7 @@ customer3_data
 - **장점**: 샤드 효율성, 관리 간소화
 - **단점**: 완전한 격리 부족, 쿼리 복잡성
 
-```json
+```
 # 인덱싱 시 테넌트 ID로 라우팅
 PUT /shared_index/_doc/1?routing=tenant123
 {
@@ -354,7 +354,7 @@ GET /shared_index/_search?routing=tenant123
 
 세그먼트를 병합하여 검색 성능 향상 및 디스크 공간 확보:
 
-```json
+```
 # 강제 병합 수행
 POST /my_index/_forcemerge
 {
@@ -366,7 +366,7 @@ POST /my_index/_forcemerge
 
 다양한 캐시 유형을 설정하여 성능 최적화:
 
-```json
+```
 PUT /my_index
 {
   "settings": {
@@ -381,7 +381,7 @@ PUT /my_index
 
 데이터를 새 인덱스로 이동하거나 매핑을 업데이트:
 
-```json
+```
 POST /_reindex
 {
   "source": {

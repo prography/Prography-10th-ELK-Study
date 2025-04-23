@@ -6,7 +6,7 @@ Elasticsearch에서 스크립트는 문서를 인덱싱하거나 업데이트하
 
 ## 기본 스크립트 예제
 
-```json
+```
 POST /my_index/_update/100
 {
   "script": {
@@ -21,7 +21,7 @@ POST /my_index/_update/100
 
 ### 1. 문서 생성
 
-```json
+```
 POST /my_index/_doc/100
 {
   "title": "Elasticsearch Advanced",
@@ -33,13 +33,13 @@ POST /my_index/_doc/100
 
 ### 2. 문서 조회
 
-```json
+```
 GET /my_index/_doc/100
 ```
 
 ### 3. 문서 업데이트 (일반적인 방법)
 
-```json
+```
 POST /my_index/_update/100
 {
   "doc": {
@@ -50,7 +50,7 @@ POST /my_index/_update/100
 
 ### 4. 스크립트를 이용한 문서 업데이트
 
-```json
+```
 POST /my_index/_update/100
 {
   "script": {
@@ -61,7 +61,7 @@ POST /my_index/_update/100
 
 ### 5. 파라미터를 이용한 스크립트
 
-```json
+```
 POST /my_index/_update/100
 {
   "script": {
@@ -75,7 +75,7 @@ POST /my_index/_update/100
 
 ### 6. 조건부 실행 (No Operation)
 
-```json
+```
 POST /my_index/_update/100
 {
   "script": {
@@ -93,7 +93,7 @@ POST /my_index/_update/100
 
 ### 7. 조건부 필드 업데이트
 
-```json
+```
 POST /my_index/_update/100
 {
   "script": {
@@ -108,7 +108,7 @@ POST /my_index/_update/100
 
 ### 8. 검색 스크립트 (Function Score)
 
-```json
+```
 POST /my_index/_search
 {
   "query": {
@@ -128,7 +128,7 @@ POST /my_index/_search
 
 ### 9. 집계 스크립트
 
-```json
+```
 POST /my_index/_search
 {
   "size": 0,
@@ -149,7 +149,7 @@ POST /my_index/_search
 
 ### 10. 저장된 스크립트 (Stored Scripts)
 
-```json
+```
 POST /_scripts/calculate-vat
 {
   "script": {
