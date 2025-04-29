@@ -54,3 +54,67 @@ PUT /my_index
 3. 숫자 필드를 항상 특정 포맷으로 인덱싱하고 싶을 때
 
 다이나믹 템플릿을 통해 이러한 규칙을 사전에 정의함으로써, 데이터 구조가 변경되더라도 Elasticsearch가 일관된 방식으로 새 필드를 처리할 수 있게 됩니다.
+
+```
+PUT /my_index
+{
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "integers_to_longs": {
+          "match_mapping_type": "long",
+          "mapping": {
+            "type": "long",
+            "fields": {
+              "raw": {
+                "type": "keyword"
+              }
+            }
+          }
+        }
+      },
+      {
+        "strings_as_keywords": {
+          "match_mapping_type": "string",
+          "match": "user_*",
+          "unmatch": "*_text",
+          "mapping": {
+            "type": "keyword"
+          }
+        }
+      },
+      {
+        "ip_addresses": {
+          "match_pattern": "regex",
+          "match": "^ip_.*",
+          "mapping": {
+            "type": "ip"
+          }
+        }
+      },
+      {
+        "nested_objects": {
+          "path_match": "user.address.*",
+          "mapping": {
+            "type": "nested"
+          }
+        }
+      }
+    ]
+  }
+}
+````
+
+1. `integers_to_longs`: 모든 정수 필드가 long 타입으로 매핑되고, 추가로 키워드 서브필드를 가짐 
+2. `strings_as_keywords`: `"user_"`로 시작하는 모든 문자열 필드가 keyword 타입으로 매핑됨 (단, "_text"로 끝나는 필드는 제외)
+3. `ip_addresses`: `"ip_"`로 시작하는 필드는 IP 주소로 취급되어 ip 타입으로 매핑됨 
+4. `nested_objects`: user.address 경로 아래의 모든 객체는 nested 타입으로 매핑됨
+
+## 다이나믹 템플릿 vs 인덱스 템플릿
+
+| 특성 | 다이나믹 템플릿 | 인덱스 템플릿 |
+|------|----------------|--------------|
+| 정의 | 인덱스 내부의 필드 동적 매핑 규칙 | 인덱스 생성 시 적용되는 인덱스 수준 템플릿 |
+| 작동 시점 | 문서 인덱싱 시점에 작동 | 인덱스 생성 시점에 작동 |
+| 적용 기준 | 필드 이름/패턴에 따라 매핑 정의 | 인덱스 이름 패턴에 따라 전체 설정 정의 |
+| 정의 위치 | 인덱스 매핑 내부에 정의 | 클러스터 수준에서 정의 |
