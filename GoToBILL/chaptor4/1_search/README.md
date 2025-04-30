@@ -231,6 +231,14 @@ GET /my_index/_search
 - 이 쿼리는 "quick"과 "book"이 정확히 이 순서로 인접해 있는 문서만 찾습니다.
 - "quick red book"은 매칭되지 않으며, "book quick" 역시 순서가 다르므로 매칭되지 않습니다.
 
+#### 예시
+```
+{
+  "content": "This is a quick book about programming."
+}
+```
+- 이때는 제대로 검색이 돼서 반환이 됩니당.
+
 ### 8. wildcard 쿼리
 
 ```
